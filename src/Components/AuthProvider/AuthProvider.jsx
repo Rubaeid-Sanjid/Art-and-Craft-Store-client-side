@@ -1,5 +1,5 @@
 
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import { createContext, useState } from 'react';
 import auth from '../../Firebase/firebaseConfig';
@@ -14,7 +14,10 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const authInfo = {loading, createUser}
+      const updateUser = (userInfo)=>{
+        return updateProfile(auth.currentUser, userInfo)
+      }
+    const authInfo = {loading, createUser, updateUser}
     
     return (
         <AuthContext.Provider value={authInfo}>
