@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navlink = (
-    <div className="flex flex-col lg:flex-row gap-3 text-lg font-medium mt-3 lg:mt-10">
+    <div className="flex flex-col lg:flex-row gap-3 text-lg font-medium ">
       <NavLink to={"/"}>Home</NavLink>
       <span className="hidden lg:inline-block">|</span>
       <NavLink to={"/allArtCraftItems"}>All Art & craft Items</NavLink>
@@ -13,7 +13,8 @@ const Navbar = () => {
     </div>
   );
   return (
-    <div className="navbar bg-base-100 container mx-auto lg:px-12">
+    <div className="bg-[#E6BAA3]">
+      <div className="navbar container mx-auto lg:px-12">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn pr-0 btn-ghost lg:hidden">
@@ -53,15 +54,16 @@ const Navbar = () => {
             <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>
         </div>
-        <div>
-          <Link>
-            <button className="btn h-8 min-h-0 lg:h-12  bg-[#D24545] text-white">Login</button>
+        <div className="flex flex-col lg:flex-row gap-2">
+          <Link to={'/login'}>
+            <button className="btn h-8 min-h-0 lg:h-12  bg-[#D24545] text-white border-0">Login</button>
           </Link>
           <Link>
-            <button className="btn h-8 min-h-0 lg:h-12 bg-[#D24545] text-white">Register</button>
+            <button className="btn h-8 min-h-0 lg:h-12 bg-[#D24545] text-white border-0">Register</button>
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 };
