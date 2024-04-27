@@ -1,44 +1,68 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Navbar = () => {
+  const navlink = (
+    <div className="flex flex-col lg:flex-row gap-3 text-lg font-medium mt-3 lg:mt-10">
+      <NavLink to={"/"}>Home</NavLink>
+      <span className="hidden lg:inline-block">|</span>
+      <NavLink to={"/allArtCraftItems"}>All Art & craft Items</NavLink>
+      <span className="hidden lg:inline-block">|</span>
+      <NavLink to={"/addCraft"}>Add Craft Item</NavLink>
+      <span className="hidden lg:inline-block">|</span>
+      <NavLink to={"/myArtAndCraft"}>My Art&Craft List</NavLink>
+    </div>
+  );
   return (
-    <div className="navbar bg-base-100">
-    <div className="navbar-start">
-      <div className="dropdown">
-        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+    <div className="navbar bg-base-100 container mx-auto lg:px-12">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn pr-0 btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            {navlink}
+          </ul>
         </div>
-        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a>Item 1</a></li>
-          <li>
-            <a>Parent</a>
-            <ul className="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </li>
-          <li><a>Item 3</a></li>
-        </ul>
+        <a className="p-1 btn-ghost text-xl lg:text-3xl font-medium flex flex-col">
+          <span className="text-[#D24545]">Canvas</span>
+          <span>Creations</span> 
+        </a>
       </div>
-      <a className="btn btn-ghost text-xl">daisyUI</a>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{navlink}</ul>
+      </div>
+      <div className="navbar-end gap-2">
+        <div className="avatar">
+          <div className="w-16 rounded-full">
+            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          </div>
+        </div>
+        <div>
+          <Link>
+            <button className="btn h-8 min-h-0 lg:h-12  bg-[#D24545] text-white">Login</button>
+          </Link>
+          <Link>
+            <button className="btn h-8 min-h-0 lg:h-12 bg-[#D24545] text-white">Register</button>
+          </Link>
+        </div>
+      </div>
     </div>
-    <div className="navbar-center hidden lg:flex">
-      <ul className="menu menu-horizontal px-1">
-        <li><a>Item 1</a></li>
-        <li>
-          <details>
-            <summary>Parent</summary>
-            <ul className="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </details>
-        </li>
-        <li><a>Item 3</a></li>
-      </ul>
-    </div>
-    <div className="navbar-end">
-      <a className="btn">Button</a>
-    </div>
-  </div>
   );
 };
 
