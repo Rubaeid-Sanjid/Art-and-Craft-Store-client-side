@@ -12,6 +12,7 @@ import AddCraft from "./Pages/AddCraft/AddCraft.jsx";
 import MyArtAndCraft from "./Pages/MyArtAndCraft/MyArtAndCraft.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import AuthProvider from "./Components/AuthProvider/AuthProvider.jsx";
+import Register from "./Pages/Register/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

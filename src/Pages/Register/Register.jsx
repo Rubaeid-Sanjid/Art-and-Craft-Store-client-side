@@ -1,26 +1,31 @@
-// import { useContext } from "react";
-// import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 
-const Login = () => {
+const Register = () => {
 
-    // const {  } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
-    // const handleLogin = (e)=>{
-    //     e.preventDefault();
-    //     const email = e.target.email.value;
-    //     const password = e.target.password.value;
+    const handleRegister = (e)=>{
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
 
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => console.error(error))
 
-    // }
+    }
   return (
     <div>
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:w-1/2">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
           <div className="card shrink-0 w-full shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -51,7 +56,7 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary">Register</button>
               </div>
             </form>
           </div>
@@ -61,4 +66,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
