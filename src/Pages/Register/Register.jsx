@@ -31,10 +31,10 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        
-        updateUser({displayName : name, photoURL})
+
+        updateUser({ displayName: name, photoURL });
         e.target.reset();
-        navigate('/login')
+        navigate("/login");
         toast("Registration successful.");
       })
       .catch((error) => console.error(error));
@@ -102,10 +102,15 @@ const Register = () => {
                 </label>
               </div>
               <h3 className="text-center">
-                Already have an account ? <Link to={"/login"} className="underline">Login</Link>
+                Already have an account ?{" "}
+                <Link to={"/login"} className="underline">
+                  Login
+                </Link>
               </h3>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn bg-[#D24545] text-white">
+                  Register
+                </button>
               </div>
             </form>
           </div>

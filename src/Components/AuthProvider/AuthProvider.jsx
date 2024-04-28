@@ -1,33 +1,78 @@
-
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import PropTypes from 'prop-types';
-import { createContext, useState } from 'react';
-import auth from '../../Firebase/firebaseConfig';
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import PropTypes from "prop-types";
+import { createContext, useEffect, useState } from "react";
+import auth from "../../Firebase/firebaseConfig";
 
 export const AuthContext = createContext(null);
 
-const AuthProvider = ({children}) => {
-    const [loading, setLoading] = useState(true);
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const createUser = (email, password)=>{
-        setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
-    }
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
-      const updateUser = (userInfo)=>{
-        return updateProfile(auth.currentUser, userInfo)
-      }
-    const authInfo = {loading, createUser, updateUser}
-    
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const updateUser = (userInfo) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, userInfo);
+  };
+
+  const loginUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  const facebookLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, facebookProvider);
+  };
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => {
+      unSubscribe();
+    };
+  }, []);
+
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    updateUser,
+    loginUser,
+    googleLogin,
+    facebookLogin,
+  };
+
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 AuthProvider.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default AuthProvider;
