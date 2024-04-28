@@ -3,10 +3,13 @@ import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import googleLogo from "../../assets/google-logo-image.png";
 import fbLogo from "../../assets/Facebook-logo.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const { loginUser, googleLogin, facebookLogin } = useContext(AuthContext);
+  const { user, loginUser, googleLogin, facebookLogin } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +18,9 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
+        e.target.reset();
+        toast("Login successful.");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -25,6 +31,8 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         console.log(result.user);
+        toast("Login successful.");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -35,6 +43,8 @@ const Login = () => {
     facebookLogin()
       .then((result) => {
         console.log(result.user);
+        toast("Login successful.");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
@@ -45,7 +55,7 @@ const Login = () => {
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:w-1/2">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-3xl lg:text-5xl font-bold">Login now!</h1>
           </div>
           <div className="card shrink-0 w-full shadow-2xl bg-base-100">
             <form onSubmit={handleLogin} className="card-body">
@@ -57,6 +67,7 @@ const Login = () => {
                   type="email"
                   name="email"
                   placeholder="email"
+                  defaultValue={user?.email}
                   className="input input-bordered"
                   required
                 />
@@ -84,7 +95,7 @@ const Login = () => {
                   Register
                 </Link>
               </h3>
-              <div className="flex gap-2">
+              <div className="flex flex-col lg:flex-row gap-2">
                 <button
                   onClick={handleGoogleLogin}
                   className="w-full px-4 py-2 border flex justify-center gap-2 rounded-lg"
@@ -107,6 +118,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
