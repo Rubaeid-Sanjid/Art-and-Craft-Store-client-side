@@ -1,5 +1,6 @@
 
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const MyCraftItem = ({myCraftItem}) => {
 
@@ -31,8 +32,13 @@ const {item_name, image, price, rating, customization, stockStatus} = myCraftIte
             <h3>{price}</h3>
           </div>
           <div className="card-actions">
-            <button className="btn bg-[#D24545] text-white text-lg flex-1">Update</button>
-            <button className="btn bg-[#D24545] text-white text-lg flex-1">Delete</button>
+            <Link to={'/updateItem'} className='flex-1'>
+            <button className="btn bg-[#D24545] text-white text-lg w-full">Update</button>
+            </Link>
+
+            <Link to={''} className='flex-1'>
+            <button className="btn bg-[#D24545] text-white text-lg w-full">Update</button>
+            </Link>  
           </div>
         </div>
       </div>
