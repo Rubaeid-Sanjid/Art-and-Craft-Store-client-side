@@ -4,6 +4,35 @@ import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 const AddCraft = () => {
   const { user } = useContext(AuthContext);
 
+  const handleAddItem=(e)=>{
+    e.preventDefault();
+
+    const item_name = e.target.item_name.value;
+    const image = e.target.image.value;
+    const subcategory_Name = e.target.subcategory_Name.value;
+    const price = e.target.price.value;
+    const description = e.target.description.value;
+    const rating = e.target.rating.value;
+    const customization = e.target.customization.value;
+    const processing_time = e.target.processing_time.value;
+    const stockStatus = e.target.stockStatus.value;
+    const userEmail = e.target.userEmail.value;
+    const userName = e.target.userName.value;
+
+    const craftInfo = {item_name, image, subcategory_Name, price, description, rating, customization, processing_time, stockStatus, userEmail, userName}
+   
+    fetch('http://localhost:5000/craftProduct', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(craftInfo)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+    })
+  }
   return (
     <div>
       <div className="hero min-h-screen mt-8">
@@ -12,7 +41,7 @@ const AddCraft = () => {
             <h1 className="text-5xl font-bold">Add Craft Item</h1>
           </div>
           <div className="card shrink-0 w-full shadow-2xl bg-base-100">
-            <form className="card-body grid grid-cols-1 lg:grid-cols-2">
+            <form onSubmit={handleAddItem} className="card-body grid grid-cols-1 lg:grid-cols-2">
               <div className="form-control">
                 <label className="label">
                   <span className="text-lg font-medium">Item Name</span>
@@ -145,7 +174,7 @@ const AddCraft = () => {
                       type="radio"
                       id="inStock"
                       name="stockStatus"
-                      value="inStock"
+                      value="In Stock"
                     />
                     <label htmlFor="inStock">In stock</label>
                   </div>
@@ -155,7 +184,7 @@ const AddCraft = () => {
                       type="radio"
                       id="order"
                       name="stockStatus"
-                      value="order"
+                      value="Made to order"
                     />
                     <label htmlFor="order">Made to Order</label>
                   </div>
