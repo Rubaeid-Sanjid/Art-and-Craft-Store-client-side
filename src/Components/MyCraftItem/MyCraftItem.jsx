@@ -17,8 +17,8 @@ const {item_name, image, price, rating, customization, stockStatus} = myCraftIte
         <div className="card-body space-y-2">
           <h2 className="card-title mx-auto mb-2">{item_name}</h2>
           <div className='flex justify-between border-b-2 pb-3 text-lg font-medium'>
-            <h3>Category:</h3>
-            <h3>{subcategory_Name}</h3>
+            <h3>Customization:</h3>
+            <h3>{customization}</h3>
           </div>
 
           <div className='flex justify-between border-b-2 pb-3 text-lg font-medium'>
@@ -31,7 +31,8 @@ const {item_name, image, price, rating, customization, stockStatus} = myCraftIte
             <h3>{price}</h3>
           </div>
           <div className="card-actions">
-            <button className="btn bg-[#D24545] text-white text-lg w-full">View Details</button>
+            <button className="btn bg-[#D24545] text-white text-lg flex-1">Update</button>
+            <button className="btn bg-[#D24545] text-white text-lg flex-1">Delete</button>
           </div>
         </div>
       </div>
