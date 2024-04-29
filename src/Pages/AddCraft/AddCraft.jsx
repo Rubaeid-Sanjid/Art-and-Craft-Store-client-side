@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddCraft = () => {
   const { user } = useContext(AuthContext);
@@ -31,17 +32,21 @@ const AddCraft = () => {
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
+      if(data.insertedId){
+        toast("Item added successfully.");
+        e.target.reset();
+      }
     })
   }
   return (
     <div>
       <div className="hero min-h-screen mt-8">
-        <div className="hero-content flex-col w-3/4">
+        <div className="hero-content flex-col lg:w-3/4">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Add Craft Item</h1>
+            <h1 className="text-3xl lg:text-5xl font-bold">Add Craft Item</h1>
           </div>
-          <div className="card shrink-0 w-full shadow-2xl bg-base-100">
-            <form onSubmit={handleAddItem} className="card-body grid grid-cols-1 lg:grid-cols-2">
+          <div className="card shrink-0 lg:w-full shadow-2xl bg-base-100">
+            <form onSubmit={handleAddItem} className="card-body lg:grid grid-cols-2">
               <div className="form-control">
                 <label className="label">
                   <span className="text-lg font-medium">Item Name</span>
@@ -94,7 +99,7 @@ const AddCraft = () => {
                 />
               </div>
 
-              <div className="form-control col-span-2">
+              <div className="form-control lg:col-span-2">
                 <label className="label">
                   <span className="text-lg font-medium">Description</span>
                 </label>
@@ -220,7 +225,7 @@ const AddCraft = () => {
               </div>
 
               <div className="form-control col-span-2 lg:w-1/2 lg:mx-auto mt-6">
-                <button className="btn bg-[#D24545] text-white">
+                <button className="btn bg-[#D24545] text-white text-lg">
                   Add Item
                 </button>
               </div>
@@ -228,6 +233,7 @@ const AddCraft = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
