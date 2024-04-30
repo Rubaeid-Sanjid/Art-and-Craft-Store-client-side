@@ -14,6 +14,7 @@ import Login from "./Pages/Login/Login.jsx";
 import AuthProvider from "./Components/AuthProvider/AuthProvider.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import UpdateItem from "./Pages/UpdateItem/UpdateItem.jsx";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,20 +25,28 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: ()=>fetch('http://localhost:5000/craftProduct')
+        loader: () => fetch("http://localhost:5000/craftProduct"),
       },
       {
         path: "/allArtCraftItems",
         element: <AllArtAndCraft></AllArtAndCraft>,
-        loader: ()=>fetch('http://localhost:5000/craftProduct')
+        loader: () => fetch("http://localhost:5000/craftProduct"),
       },
       {
         path: "/addCraft",
-        element: <AddCraft></AddCraft>,
+        element: (
+          <PrivateRoute>
+            <AddCraft></AddCraft>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myArtAndCraft",
-        element: <MyArtAndCraft></MyArtAndCraft>,
+        element: (
+          <PrivateRoute>
+            <MyArtAndCraft></MyArtAndCraft>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -49,8 +58,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateItem/:id",
-        element: <UpdateItem></UpdateItem>,
-        loader: ({params})=> fetch(`http://localhost:5000/craftProduct/${params.id}`)
+        element: (
+          <PrivateRoute>
+            <UpdateItem></UpdateItem>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/craftProduct/${params.id}`),
       },
     ],
   },
