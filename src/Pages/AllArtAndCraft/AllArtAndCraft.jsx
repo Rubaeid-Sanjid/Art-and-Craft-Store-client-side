@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllArtAndCraft = () => {
-  const craftItems = useLoaderData();
+  // const craftItems = useLoaderData();
 
   return (
     <div className="overflow-x-auto my-12 container mx-auto lg:px-12">
@@ -9,7 +9,6 @@ const AllArtAndCraft = () => {
         All Art & Craft Items
       </h2>
       <table className="table">
-        {/* head */}
         <thead>
           <tr>
             <th></th>
