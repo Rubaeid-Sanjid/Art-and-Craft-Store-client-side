@@ -32,7 +32,7 @@ const CraftItem = ({ craftItem }) => {
             <h3>{price}</h3>
           </div>
           <div className="card-actions">
-            <Link to={`/viewDetails/${craftItem._id}`}>
+            <Link to={`/viewDetails/${craftItem._id}`} className="w-full">
               <button className="btn bg-[#D24545] text-white text-lg w-full">
                 View Details
               </button>

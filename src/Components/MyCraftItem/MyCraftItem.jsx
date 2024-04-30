@@ -21,14 +21,14 @@ const MyCraftItem = ({ myCraftItem, setMyCraftItems }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://art-and-craft-store-server-sigma.vercel.app//craftProduct/${id}`, {
+        fetch(`http://localhost:5000/craftProduct/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
 
-              fetch(`https://art-and-craft-store-server-sigma.vercel.app//craftProduct/email/${user?.email}`)
+              fetch(`http://localhost:5000/craftProduct/email/${user?.email}`)
                 .then((res) => res.json())
                 .then((data) => {
                   setMyCraftItems(data);
