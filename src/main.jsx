@@ -48,8 +48,9 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/updateItem",
+        path: "/updateItem/:id",
         element: <UpdateItem></UpdateItem>,
+        loader: ({params})=> fetch(`http://localhost:5000/craftProduct/${params.id}`)
       },
     ],
   },

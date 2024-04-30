@@ -32,12 +32,12 @@ const {item_name, image, price, rating, customization, stockStatus} = myCraftIte
             <h3>{price}</h3>
           </div>
           <div className="card-actions">
-            <Link to={'/updateItem'} className='flex-1'>
-            <button className="btn bg-[#D24545] text-white text-lg w-full">Update</button>
+            <Link to={`/updateItem/${myCraftItem._id}`} className='flex-1'>
+            <button  className="btn bg-[#D24545] text-white text-lg w-full">Update</button>
             </Link>
 
             <Link to={''} className='flex-1'>
-            <button className="btn bg-[#D24545] text-white text-lg w-full">Update</button>
+            <button className="btn bg-[#D24545] text-white text-lg w-full">Delete</button>
             </Link>  
           </div>
         </div>
