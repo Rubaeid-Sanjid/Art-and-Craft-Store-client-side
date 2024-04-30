@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
-const MyCraftItem = ({ myCraftItem }) => {
+const MyCraftItem = ({ myCraftItem, setMyCraftItems }) => {
+  const { user } = useContext(AuthContext);
+
   const { item_name, image, price, rating, customization, stockStatus } =
     myCraftItem;
 
@@ -23,6 +27,13 @@ const MyCraftItem = ({ myCraftItem }) => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
+
+              fetch(`http://localhost:5000/craftProduct/email/${user?.email}`)
+                .then((res) => res.json())
+                .then((data) => {
+                  setMyCraftItems(data);
+                });
+
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -81,6 +92,7 @@ const MyCraftItem = ({ myCraftItem }) => {
 
 MyCraftItem.propTypes = {
   myCraftItem: PropTypes.object,
+  setMyCraftItems: PropTypes.func
 };
 
 export default MyCraftItem;

@@ -12,7 +12,6 @@ const MyArtAndCraft = () => {
       .then((res) => res.json())
       .then((data) => {
         setMyCraftItems(data);
-        console.log(data);
       });
   }, [user]);
 
@@ -26,6 +25,7 @@ const MyArtAndCraft = () => {
           <MyCraftItem
             key={myCraftItem._id}
             myCraftItem={myCraftItem}
+            setMyCraftItems={setMyCraftItems}
           ></MyCraftItem>
         ))}
       </div>
