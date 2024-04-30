@@ -16,7 +16,7 @@ const MyArtAndCraft = () => {
       });
   }, [user]);
 
-  return (
+  return (    
     <div className="container mx-auto lg:px-12 my-12">
       <h2 className="text-center text-4xl font-semibold mb-6">
         My Art&Craft List
