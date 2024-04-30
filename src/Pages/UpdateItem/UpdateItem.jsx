@@ -1,5 +1,5 @@
-import { ToastContainer, toast } from "react-toastify";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateItem = () => {
   const currCraftItem = useLoaderData();
@@ -41,21 +41,35 @@ const UpdateItem = () => {
       updated_stockStatus,
     };
 
-    fetch(`http://localhost:5000/craftProduct/${currCraftItem._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedCraftInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          toast("Item Updated successfully.");
-          e.target.reset();
-        }
-      });
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        fetch(`http://localhost:5000/craftProduct/${currCraftItem._id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(updatedCraftInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+              Swal.fire("Saved!", "", "success");
+              e.target.reset();
+            }
+          });
+       
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
   };
   return (
     <div>
@@ -168,7 +182,7 @@ const UpdateItem = () => {
                       id="yes"
                       name="customization"
                       value="yes"
-                      defaultChecked = {customization === "yes"}
+                      defaultChecked={customization === "yes"}
                     />
                     <label htmlFor="yes">Yes</label>
                   </div>
@@ -179,7 +193,7 @@ const UpdateItem = () => {
                       id="no"
                       name="customization"
                       value="no"
-                      defaultChecked= {customization === "no"}
+                      defaultChecked={customization === "no"}
                     />
                     <label htmlFor="no">No</label>
                   </div>
@@ -211,7 +225,7 @@ const UpdateItem = () => {
                       type="radio"
                       id="inStock"
                       name="stockStatus"
-                      defaultChecked = {stockStatus === "In Stock"}
+                      defaultChecked={stockStatus === "In Stock"}
                       value="In Stock"
                     />
                     <label htmlFor="inStock">In stock</label>
@@ -222,7 +236,7 @@ const UpdateItem = () => {
                       type="radio"
                       id="order"
                       name="stockStatus"
-                      defaultChecked = {stockStatus === "Made to order"}
+                      defaultChecked={stockStatus === "Made to order"}
                       value="Made to order"
                     />
                     <label htmlFor="order">Made to Order</label>
@@ -239,7 +253,6 @@ const UpdateItem = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

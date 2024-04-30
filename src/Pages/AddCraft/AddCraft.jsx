@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const AddCraft = () => {
   const { user } = useContext(AuthContext);
@@ -33,7 +33,11 @@ const AddCraft = () => {
     .then(data=>{
       console.log(data);
       if(data.insertedId){
-        toast("Item added successfully.");
+        Swal.fire({
+          title: "Good job!",
+          text: "Item added successfully!",
+          icon: "success"
+        });
         e.target.reset();
       }
     })
@@ -233,7 +237,6 @@ const AddCraft = () => {
           </div>
         </div>
       </div>
-      <ToastContainer/>
     </div>
   );
 };
