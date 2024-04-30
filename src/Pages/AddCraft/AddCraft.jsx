@@ -22,7 +22,7 @@ const AddCraft = () => {
 
     const craftInfo = {item_name, image, subcategory_Name, price, description, rating, customization, processing_time, stockStatus, userEmail, userName}
    
-    fetch('http://localhost:5000/craftProduct', {
+    fetch('https://art-and-craft-store-server-sigma.vercel.app//craftProduct', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

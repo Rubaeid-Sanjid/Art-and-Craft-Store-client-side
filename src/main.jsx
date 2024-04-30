@@ -25,12 +25,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/craftProduct"),
+        loader: () => fetch("https://art-and-craft-store-server-sigma.vercel.app/craftProduct"),
       },
       {
         path: "/allArtCraftItems",
         element: <AllArtAndCraft></AllArtAndCraft>,
-        loader: () => fetch("http://localhost:5000/craftProduct"),
+        loader: () => fetch("https://art-and-craft-store-server-sigma.vercel.app/craftProduct"),
       },
       {
         path: "/addCraft",
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/craftProduct/${params.id}`),
+          fetch(`https://art-and-craft-store-server-sigma.vercel.app/craftProduct/${params.id}`),
       },
     ],
   },

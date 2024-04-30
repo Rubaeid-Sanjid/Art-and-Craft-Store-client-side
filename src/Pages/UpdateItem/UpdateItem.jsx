@@ -50,7 +50,7 @@ const UpdateItem = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/craftProduct/${currCraftItem._id}`, {
+        fetch(`https://art-and-craft-store-server-sigma.vercel.app//craftProduct/${currCraftItem._id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",
