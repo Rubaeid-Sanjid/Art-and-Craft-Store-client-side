@@ -5,12 +5,12 @@ const AllArtAndCraft = () => {
 
   return (
     <div className="overflow-x-auto my-12 container mx-auto lg:px-12">
-      <h2 className="text-center text-4xl font-semibold mb-6">
+      <h2 className="text-center text-3xl lg:text-4xl font-semibold mb-6">
         All Art & Craft Items
       </h2>
       <table className="table">
         <thead>
-          <tr>
+          <tr className="text-lg">
             <th></th>
             <th>Item Name</th>
             <th>Subcategory Name</th>

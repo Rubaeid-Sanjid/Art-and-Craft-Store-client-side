@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <div className="bg-[#E6BAA3] mt-12">
       <footer className="footer p-10 container mx-auto lg:px-12">
-        <aside className="text-lg font-medium">
+        <aside className="lg:text-lg font-medium">
           <img src={logo} alt="" className="w-16" />
           <p>
             Canvas Creations Ltd.
@@ -12,18 +12,18 @@ const Footer = () => {
           </p>
           <p>Copyright © 2024 - All right reserved</p>
         </aside>
-        <nav className="text-lg font-medium">
+        <nav className="lg:text-lg font-medium">
           <h6 className="footer-title">Services</h6>
           <a className="link link-hover">Branding</a>
           <a className="link link-hover">Design</a>
           <a className="link link-hover">Advertisement</a>
         </nav>
-        <nav className="text-lg font-medium">
+        <nav className="lg:text-lg font-medium">
           <h6 className="footer-title">Company</h6>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
         </nav>
-        <nav className="text-lg font-medium">
+        <nav className="lg:text-lg font-medium">
           <h6 className="footer-title">Social</h6>
           <div className="grid grid-flow-col gap-4">
             <a>

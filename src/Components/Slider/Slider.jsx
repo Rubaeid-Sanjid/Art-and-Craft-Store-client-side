@@ -35,7 +35,7 @@ const Slider = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-[#E6BAA3] opacity-20"></div>
             <div className="hero-content text-center text-white">
               <div className="lg:w-3/4">
-                <h1 className="mb-5 text-5xl font-bold">
+                <h1 className="mb-5 text-3xl lg:text-5xl font-bold">
                   Discover Elegant Paintings for Your Space
                 </h1>
               </div>
@@ -53,7 +53,7 @@ const Slider = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-[#E6BAA3] opacity-20"></div>
             <div className="hero-content text-center text-white">
               <div className="lg:w-3/4">
-                <h1 className="mb-5 text-5xl font-bold">
+                <h1 className="mb-5 text-3xl lg:text-5xl font-bold">
                   Unveil Timeless Beauty with Our Artworks
                 </h1>
               </div>
@@ -71,7 +71,7 @@ const Slider = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-[#E6BAA3] opacity-10"></div>
             <div className="hero-content text-center text-white">
               <div className="lg:w-3/4">
-                <h1 className="mb-5 text-5xl font-bold">
+                <h1 className="mb-5 text-3xl lg:text-5xl font-bold">
                   Embrace Creativity Explore Our Elegant Art Gallery
                 </h1>
               </div>

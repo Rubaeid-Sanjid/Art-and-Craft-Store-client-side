@@ -17,7 +17,7 @@ const MyArtAndCraft = () => {
 
   return (    
     <div className="container mx-auto lg:px-12 my-12">
-      <h2 className="text-center text-4xl font-semibold mb-6">
+      <h2 className="text-center text-3xl lg:text-4xl font-semibold mb-6">
         My Art&Craft List
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
