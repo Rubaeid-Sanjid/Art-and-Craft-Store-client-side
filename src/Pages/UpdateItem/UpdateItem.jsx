@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdateItem = () => {
   const currCraftItem = useLoaderData();
-  console.log(currCraftItem);
 
   const {
     item_name,
@@ -17,7 +16,7 @@ const UpdateItem = () => {
     stockStatus,
   } = currCraftItem;
 
-  const handleAddItem = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
 
     const updated_item_name = e.target.item_name.value;
@@ -52,7 +51,7 @@ const UpdateItem = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data) {
+        if (data.modifiedCount > 0) {
           toast("Item Updated successfully.");
           e.target.reset();
         }
@@ -69,7 +68,7 @@ const UpdateItem = () => {
           </div>
           <div className="card shrink-0 lg:w-full shadow-2xl bg-base-100">
             <form
-              onSubmit={handleAddItem}
+              onSubmit={handleUpdate}
               className="card-body lg:grid grid-cols-2"
             >
               <div className="form-control">
