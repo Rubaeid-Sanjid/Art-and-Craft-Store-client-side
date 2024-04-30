@@ -15,6 +15,7 @@ import AuthProvider from "./Components/AuthProvider/AuthProvider.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import UpdateItem from "./Pages/UpdateItem/UpdateItem.jsx";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
+import ViewDetails from "./Pages/ViewDetails/ViewDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +26,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://art-and-craft-store-server-sigma.vercel.app/craftProduct"),
+        loader: () => fetch("http://localhost:5000/craftProduct"),
       },
       {
         path: "/allArtCraftItems",
         element: <AllArtAndCraft></AllArtAndCraft>,
-        loader: () => fetch("https://art-and-craft-store-server-sigma.vercel.app/craftProduct"),
+        loader: () => fetch("http://localhost:5000/craftProduct"),
       },
       {
         path: "/addCraft",
@@ -64,7 +65,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://art-and-craft-store-server-sigma.vercel.app/craftProduct/${params.id}`),
+          fetch(`http://localhost:5000/craftProduct/${params.id}`),
+      },
+      {
+        path: "/viewDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/craftProduct/${params.id}`),
       },
     ],
   },
