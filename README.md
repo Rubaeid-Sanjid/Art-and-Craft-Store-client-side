@@ -3,7 +3,7 @@
 Live site URL: https://art-and-craft-store-auth.web.app
 
 ## About:
-Canvas Creations is an online art gallery shop. It provides various type of arts to customer.
+Canvas Creations is an online art gallery shop. It provides various types of art to customers.
 
 ## Features:
 * Firebase authentications like google, facebook sign in
