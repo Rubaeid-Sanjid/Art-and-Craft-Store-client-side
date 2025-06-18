@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useCart } from "../CartProvider/CartProvider"; // Import the useCart hook
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
+  const {cart} = useCart(); // Get cart items from context
 
   const handleLogout = () => {
     logoutUser()
@@ -67,6 +70,17 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navlink}</ul>
         </div>
         <div className="navbar-end gap-2">
+        
+          {user && (
+            <div className="flex items-center gap-4">
+              <NavLink to="/cart" className="flex items-center">
+                <button className="btn h-8 min-h-0 lg:h-12 text-white border-0">
+                  <FaShoppingCart /> ({cart.length})
+                </button>
+              </NavLink>
+            </div>
+          )}
+
           {user && (
             <div className="avatar">
               <div className="w-16 rounded-full">

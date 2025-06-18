@@ -1,6 +1,6 @@
 # Canvas Creations
 
-Live site URL:
+Live site URL: https://art-and-craft-store-auth.web.app/
 
 Selected category name:
 Painting and Drawing

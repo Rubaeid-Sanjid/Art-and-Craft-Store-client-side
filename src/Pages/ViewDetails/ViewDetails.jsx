@@ -1,7 +1,9 @@
 import { useLoaderData } from "react-router-dom";
+import { useCart } from "../../Components/CartProvider/CartProvider";
 
 const ViewDetails = () => {
   const craftItem = useLoaderData();
+  const {addToCart} = useCart();
 
   const {
     item_name,
@@ -14,6 +16,10 @@ const ViewDetails = () => {
     processing_time,
     stockStatus,
   } = craftItem;
+
+  const handleAddToCart = () => {
+    addToCart(craftItem); // Add the item to cart
+  };
 
   return (
     <div className="container mx-auto lg:px-12 my-12">
@@ -55,6 +61,9 @@ const ViewDetails = () => {
               <h3 className="font-medium">{price}</h3>
             </div>
           </div>
+        <button onClick={handleAddToCart} className="btn btn-primary mt-4">
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

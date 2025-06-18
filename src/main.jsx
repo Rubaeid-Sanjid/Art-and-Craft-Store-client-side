@@ -16,6 +16,8 @@ import Register from "./Pages/Register/Register.jsx";
 import UpdateItem from "./Pages/UpdateItem/UpdateItem.jsx";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
 import ViewDetails from "./Pages/ViewDetails/ViewDetails.jsx";
+import { CartProvider } from "./Components/CartProvider/CartProvider.jsx";
+import CartItems from "./Pages/CartItems/CartItems.jsx";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +79,10 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://art-and-craft-store-server-sigma.vercel.app/craftProduct/${params.id}`),
       },
+      {
+        path: "/cart",
+        element: <CartItems></CartItems>
+      }
     ],
   },
 ]);
@@ -84,7 +90,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
+      <CartProvider>
       <RouterProvider router={router} />
+      </CartProvider>
     </AuthProvider>
   </React.StrictMode>
 );
